@@ -8637,7 +8637,7 @@ module Image_Classifier (
  input [9:0] Pix_782, // sfix10_En0 
  input [9:0] Pix_783, // sfix10_En0 
  input [9:0] Pix_784, // sfix10_En0 
- output [3:0] Image_Number, // sfix26_En18 
+ output reg [3:0] Image_Number, // sfix26_En18 
  output Output_Valid 
  );
     wire [14896:0] weight_0 ;
@@ -9541,18 +9541,19 @@ module Image_Classifier (
 		Wgt_9_780, Wgt_9_781, Wgt_9_782, Wgt_9_783};
     wire [189:0] bias;
     assign bias = {Wgt_0_784, Wgt_1_784, Wgt_2_784, Wgt_3_784, Wgt_4_784, Wgt_5_784, Wgt_6_784, Wgt_7_784, Wgt_8_784, Wgt_9_784};
-    wire [25:0] out0;    
-    wire [25:0] out1;
-    wire [25:0] out2;
-    wire [25:0] out3;
-    wire [25:0] out4; 
-    wire [25:0] out5;
-    wire [25:0] out6;
-    wire [25:0] out7;
-    wire [25:0] out8;
-    wire [25:0] out9;
-    wire out0_valid, out1_valid, out2_valid, out3_valid, out4_valid;
-    wire out5_valid, out6_valid, out7_valid, out8_valid, out9_valid;
+    wire [25:0] out0_0, out0_1, out0_2, out0_3 ;
+    wire [25:0] out1_0, out1_1, out1_2, out1_3 ;
+    wire [25:0] out2_0, out2_1, out2_2, out2_3 ;
+    wire [25:0] out3_0, out3_1, out3_2, out3_3 ;
+    wire [25:0] out4_0, out4_1, out4_2, out4_3 ;
+    wire [25:0] out5_0, out5_1, out5_2, out5_3 ;
+    wire [25:0] out6_0, out6_1, out6_2, out6_3 ;
+    wire [25:0] out7_0, out7_1, out7_2, out7_3 ;
+    wire [25:0] out8_0, out8_1, out8_2, out8_3 ;
+    wire [25:0] out9_0, out9_1, out9_2, out9_3 ;
+    wire [25:0] out0, out1, out2, out3, out4, out5, out6, out7, out8, out9;
+    wire [25:0] final0, final1, final2, final3, final4, final5, final6, final7, final8, final9;
+    wire out_valid;
     parameter OUT0_0 = 6'b000000;
     parameter OUT0_1 = 6'b000001;
     parameter OUT0_2 = 6'b000010;
@@ -9792,6 +9793,434 @@ module Image_Classifier (
         end
     end
     
-    dot_product_kernel dot(clk,GlobalReset,Input_Valid, pixel_input, weight_input, out_temp, out0_valid);
+    dot_product_kernel dot(clk,GlobalReset,Input_Valid, pixel_input, weight_input, out_temp, out_valid);
 
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out0_0<=0;
+		end else if(out_valid && state==OUT0_0) begin
+			out0_0<=out_temp;
+		end else begin
+			out0_0<=out0_0;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out0_1<=0;
+		end else if(out_valid && state==OUT0_1) begin
+			out0_1<=out_temp;
+		end else begin
+			out0_1<=out0_1;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out0_2<=0;
+		end else if(out_valid && state==OUT0_2) begin
+			out0_2<=out_temp;
+		end else begin
+			out0_2<=out0_2;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out0_3<=0;
+		end else if(out_valid && state==OUT0_3) begin
+			out0_3<=out_temp;
+		end else begin
+			out0_3<=out0_3;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out1_0<=0;
+		end else if(out_valid && state==OUT1_0) begin
+			out1_0<=out_temp;
+		end else begin
+			out1_0<=out1_0;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out1_1<=0;
+		end else if(out_valid && state==OUT1_1) begin
+			out1_1<=out_temp;
+		end else begin
+			out1_1<=out1_1;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out1_2<=0;
+		end else if(out_valid && state==OUT1_2) begin
+			out1_2<=out_temp;
+		end else begin
+			out1_2<=out1_2;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out1_3<=0;
+		end else if(out_valid && state==OUT1_3) begin
+			out1_3<=out_temp;
+		end else begin
+			out1_3<=out1_3;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out2_0<=0;
+		end else if(out_valid && state==OUT2_0) begin
+			out2_0<=out_temp;
+		end else begin
+			out2_0<=out2_0;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out2_1<=0;
+		end else if(out_valid && state==OUT2_1) begin
+			out2_1<=out_temp;
+		end else begin
+			out2_1<=out2_1;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out2_2<=0;
+		end else if(out_valid && state==OUT2_2) begin
+			out2_2<=out_temp;
+		end else begin
+			out2_2<=out2_2;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out2_3<=0;
+		end else if(out_valid && state==OUT2_3) begin
+			out2_3<=out_temp;
+		end else begin
+			out2_3<=out2_3;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out3_0<=0;
+		end else if(out_valid && state==OUT3_0) begin
+			out3_0<=out_temp;
+		end else begin
+			out3_0<=out3_0;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out3_1<=0;
+		end else if(out_valid && state==OUT3_1) begin
+			out3_1<=out_temp;
+		end else begin
+			out3_1<=out3_1;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out3_2<=0;
+		end else if(out_valid && state==OUT3_2) begin
+			out3_2<=out_temp;
+		end else begin
+			out3_2<=out3_2;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out3_3<=0;
+		end else if(out_valid && state==OUT3_3) begin
+			out3_3<=out_temp;
+		end else begin
+			out3_3<=out3_3;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out4_0<=0;
+		end else if(out_valid && state==OUT4_0) begin
+			out4_0<=out_temp;
+		end else begin
+			out4_0<=out4_0;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out4_1<=0;
+		end else if(out_valid && state==OUT4_1) begin
+			out4_1<=out_temp;
+		end else begin
+			out4_1<=out4_1;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out4_2<=0;
+		end else if(out_valid && state==OUT4_2) begin
+			out4_2<=out_temp;
+		end else begin
+			out4_2<=out4_2;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out4_3<=0;
+		end else if(out_valid && state==OUT4_3) begin
+			out4_3<=out_temp;
+		end else begin
+			out4_3<=out4_3;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out5_0<=0;
+		end else if(out_valid && state==OUT5_0) begin
+			out5_0<=out_temp;
+		end else begin
+			out5_0<=out5_0;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out5_1<=0;
+		end else if(out_valid && state==OUT5_1) begin
+			out5_1<=out_temp;
+		end else begin
+			out5_1<=out5_1;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out5_2<=0;
+		end else if(out_valid && state==OUT5_2) begin
+			out5_2<=out_temp;
+		end else begin
+			out5_2<=out5_2;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out5_3<=0;
+		end else if(out_valid && state==OUT5_3) begin
+			out5_3<=out_temp;
+		end else begin
+			out5_3<=out5_3;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out6_0<=0;
+		end else if(out_valid && state==OUT6_0) begin
+			out6_0<=out_temp;
+		end else begin
+			out6_0<=out6_0;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out6_1<=0;
+		end else if(out_valid && state==OUT6_1) begin
+			out6_1<=out_temp;
+		end else begin
+			out6_1<=out6_1;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out6_2<=0;
+		end else if(out_valid && state==OUT6_2) begin
+			out6_2<=out_temp;
+		end else begin
+			out6_2<=out6_2;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out6_3<=0;
+		end else if(out_valid && state==OUT6_3) begin
+			out6_3<=out_temp;
+		end else begin
+			out6_3<=out6_3;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out7_0<=0;
+		end else if(out_valid && state==OUT7_0) begin
+			out7_0<=out_temp;
+		end else begin
+			out7_0<=out7_0;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out7_1<=0;
+		end else if(out_valid && state==OUT7_1) begin
+			out7_1<=out_temp;
+		end else begin
+			out7_1<=out7_1;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out7_2<=0;
+		end else if(out_valid && state==OUT7_2) begin
+			out7_2<=out_temp;
+		end else begin
+			out7_2<=out7_2;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out7_3<=0;
+		end else if(out_valid && state==OUT7_3) begin
+			out7_3<=out_temp;
+		end else begin
+			out7_3<=out7_3;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out8_0<=0;
+		end else if(out_valid && state==OUT8_0) begin
+			out8_0<=out_temp;
+		end else begin
+			out8_0<=out8_0;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out8_1<=0;
+		end else if(out_valid && state==OUT8_1) begin
+			out8_1<=out_temp;
+		end else begin
+			out8_1<=out8_1;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out8_2<=0;
+		end else if(out_valid && state==OUT8_2) begin
+			out8_2<=out_temp;
+		end else begin
+			out8_2<=out8_2;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out8_3<=0;
+		end else if(out_valid && state==OUT8_3) begin
+			out8_3<=out_temp;
+		end else begin
+			out8_3<=out8_3;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out9_0<=0;
+		end else if(out_valid && state==OUT9_0) begin
+			out9_0<=out_temp;
+		end else begin
+			out9_0<=out9_0;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out9_1<=0;
+		end else if(out_valid && state==OUT9_1) begin
+			out9_1<=out_temp;
+		end else begin
+			out9_1<=out9_1;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out9_2<=0;
+		end else if(out_valid && state==OUT9_2) begin
+			out9_2<=out_temp;
+		end else begin
+			out9_2<=out9_2;
+		end
+	end
+	always @(posedge clk) begin
+		if (GlobalReset) begin
+			out9_3<=0;
+		end else if(out_valid && state==OUT9_3) begin
+			out9_3<=out_temp;
+		end else begin
+			out9_3<=out9_3;
+		end
+	end    
+
+    
+    wire [25:0] reduction0_0, reduction0_1;
+    wire [25:0] reduction1_0, reduction1_1;
+    wire [25:0] reduction2_0, reduction2_1;
+    wire [25:0] reduction3_0, reduction3_1;
+    wire [25:0] reduction4_0, reduction4_1;
+    wire [25:0] reduction5_0, reduction5_1;
+    wire [25:0] reduction6_0, reduction6_1;
+    wire [25:0] reduction7_0, reduction7_1;
+    wire [25:0] reduction8_0, reduction8_1;
+    wire [25:0] reduction9_0, reduction9_1;
+
+    FixedPointAdder f0(clk,GlobalReset,out0_0,out0_1,reduction0_0);
+    FixedPointAdder f1(clk,GlobalReset,out0_2,out0_3,reduction0_1);
+    FixedPointAdder f2(clk,GlobalReset,out1_0,out1_1,reduction1_0);
+    FixedPointAdder f3(clk,GlobalReset,out1_2,out1_3,reduction1_1);    
+    FixedPointAdder f4(clk,GlobalReset,out2_0,out2_1,reduction2_0);
+    FixedPointAdder f5(clk,GlobalReset,out2_2,out2_3,reduction2_1);    
+    FixedPointAdder f6(clk,GlobalReset,out3_0,out3_1,reduction3_0);
+    FixedPointAdder f7(clk,GlobalReset,out3_2,out3_3,reduction3_1);    
+    FixedPointAdder f8(clk,GlobalReset,out4_0,out4_1,reduction4_0);
+    FixedPointAdder f9(clk,GlobalReset,out4_2,out4_3,reduction4_1);    
+    FixedPointAdder f10(clk,GlobalReset,out5_0,out5_1,reduction5_0);
+    FixedPointAdder f11(clk,GlobalReset,out5_2,out5_3,reduction5_1);    
+    FixedPointAdder f12(clk,GlobalReset,out6_0,out6_1,reduction6_0);
+    FixedPointAdder f13(clk,GlobalReset,out6_2,out6_3,reduction6_1);    
+    FixedPointAdder f14(clk,GlobalReset,out7_0,out7_1,reduction7_0);
+    FixedPointAdder f15(clk,GlobalReset,out7_2,out7_3,reduction7_1);    
+    FixedPointAdder f16(clk,GlobalReset,out8_0,out8_1,reduction8_0);
+    FixedPointAdder f17(clk,GlobalReset,out8_2,out8_3,reduction8_1);    
+    FixedPointAdder f18(clk,GlobalReset,out9_0,out9_1,reduction9_0);
+    FixedPointAdder f19(clk,GlobalReset,out9_2,out9_3,reduction9_1);    
+
+    FixedPointAdder f20(clk,GlobalReset,reduction0_0,reduction0_1,out0);
+    FixedPointAdder f21(clk,GlobalReset,reduction1_0,reduction1_1,out1);
+    FixedPointAdder f22(clk,GlobalReset,reduction2_0,reduction2_1,out2);
+    FixedPointAdder f23(clk,GlobalReset,reduction3_0,reduction3_1,out3);
+    FixedPointAdder f24(clk,GlobalReset,reduction4_0,reduction4_1,out4);
+    FixedPointAdder f25(clk,GlobalReset,reduction5_0,reduction5_1,out5);
+    FixedPointAdder f26(clk,GlobalReset,reduction6_0,reduction6_1,out6);
+    FixedPointAdder f27(clk,GlobalReset,reduction7_0,reduction7_1,out7);
+    FixedPointAdder f28(clk,GlobalReset,reduction8_0,reduction8_1,out8);
+    FixedPointAdder f29(clk,GlobalReset,reduction9_0,reduction9_1,out9);
+    
+    
+    FixedPointAdder f30(clk,GlobalReset,out0,Wgt_0_784,final0);
+    FixedPointAdder f31(clk,GlobalReset,out1,Wgt_1_784,final1);
+    FixedPointAdder f32(clk,GlobalReset,out2,Wgt_2_784,final2);
+    FixedPointAdder f33(clk,GlobalReset,out3,Wgt_3_784,final3);
+    FixedPointAdder f34(clk,GlobalReset,out4,Wgt_4_784,final4);
+    FixedPointAdder f35(clk,GlobalReset,out5,Wgt_5_784,final5);
+    FixedPointAdder f36(clk,GlobalReset,out6,Wgt_6_784,final6);
+    FixedPointAdder f37(clk,GlobalReset,out7,Wgt_7_784,final7);
+    FixedPointAdder f38(clk,GlobalReset,out8,Wgt_8_784,final8);
+    FixedPointAdder f39(clk,GlobalReset,out9,Wgt_9_784,final9);
+    parameter fc_finish = finish_cycle*40;
+    parameter reduction_finish = fc_finish+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY;
+    reg [9:0] global_counter;
+    always @(posedge clk) begin
+        if(GlobalReset) begin
+            global_counter<=0;
+        end else begin
+            global_counter<=global_counter+1;
+        end
+    end
+    compare c(clk,final0,final1,final2,final3,final4,final5,final6,final7,final8,final9,Image_Number);
+    assign Output_Valid = (global_counter==reduction_finish+4);
  endmodule
