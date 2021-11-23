@@ -25,7 +25,7 @@ parameter finish_cycle = MULTI_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_D
 module dot_product_kernel(input clk,
 input GlobalReset,
 input Input_Valid,
-input [1959:0] pixels,
+input [1959:0] pixel,
 input [3723:0] weight,
 output [25:0] result,
 output valid);
@@ -245,7 +245,7 @@ output valid);
     FixedPointMultiplier f193(clk,GlobalReset,weight[3685:3667],pixel[1939:1930],temp_193);
     FixedPointMultiplier f194(clk,GlobalReset,weight[3704:3686],pixel[1949:1940],temp_194);
     FixedPointMultiplier f195(clk,GlobalReset,weight[3723:3705],pixel[1959:1950],temp_195);
-    wire [25:0] reduction_0, reduction_1, reduction_2, reduction_3, reduction_4, reduction_5, reduction_6, reduction_7, reduction_8, reduction_9, reduction_10, 
+    wire [25:0] reduction_0, reduction_1, reduction_2, reduction_3, reduction_4, reduction_5, reduction_6, reduction_7, reduction_8, reduction_9, reduction_10; 
     wire [25:0] reduction_11, reduction_12, reduction_13, reduction_14, reduction_15, reduction_16, reduction_17, reduction_18, reduction_19, reduction_20; 
     wire [25:0] reduction_21, reduction_22, reduction_23, reduction_24, reduction_25, reduction_26, reduction_27, reduction_28, reduction_29, reduction_30; 
     wire [25:0] reduction_31, reduction_32, reduction_33, reduction_34, reduction_35, reduction_36, reduction_37, reduction_38, reduction_39, reduction_40; 

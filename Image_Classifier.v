@@ -8637,7 +8637,7 @@ module Image_Classifier (
  input [9:0] Pix_782, // sfix10_En0 
  input [9:0] Pix_783, // sfix10_En0 
  input [9:0] Pix_784, // sfix10_En0 
- output reg [3:0] Image_Number, // sfix26_En18 
+ output [3:0] Image_Number, // sfix26_En18 
  output Output_Valid 
  );
     wire [14896:0] weight_0 ;
@@ -9541,16 +9541,16 @@ module Image_Classifier (
 		Wgt_9_780, Wgt_9_781, Wgt_9_782, Wgt_9_783};
     wire [189:0] bias;
     assign bias = {Wgt_0_784, Wgt_1_784, Wgt_2_784, Wgt_3_784, Wgt_4_784, Wgt_5_784, Wgt_6_784, Wgt_7_784, Wgt_8_784, Wgt_9_784};
-    wire [25:0] out0_0, out0_1, out0_2, out0_3 ;
-    wire [25:0] out1_0, out1_1, out1_2, out1_3 ;
-    wire [25:0] out2_0, out2_1, out2_2, out2_3 ;
-    wire [25:0] out3_0, out3_1, out3_2, out3_3 ;
-    wire [25:0] out4_0, out4_1, out4_2, out4_3 ;
-    wire [25:0] out5_0, out5_1, out5_2, out5_3 ;
-    wire [25:0] out6_0, out6_1, out6_2, out6_3 ;
-    wire [25:0] out7_0, out7_1, out7_2, out7_3 ;
-    wire [25:0] out8_0, out8_1, out8_2, out8_3 ;
-    wire [25:0] out9_0, out9_1, out9_2, out9_3 ;
+    reg [25:0] out0_0, out0_1, out0_2, out0_3 ;
+    reg [25:0] out1_0, out1_1, out1_2, out1_3 ;
+    reg [25:0] out2_0, out2_1, out2_2, out2_3 ;
+    reg [25:0] out3_0, out3_1, out3_2, out3_3 ;
+    reg [25:0] out4_0, out4_1, out4_2, out4_3 ;
+    reg [25:0] out5_0, out5_1, out5_2, out5_3 ;
+    reg [25:0] out6_0, out6_1, out6_2, out6_3 ;
+    reg [25:0] out7_0, out7_1, out7_2, out7_3 ;
+    reg [25:0] out8_0, out8_1, out8_2, out8_3 ;
+    reg [25:0] out9_0, out9_1, out9_2, out9_3 ;
     wire [25:0] out0, out1, out2, out3, out4, out5, out6, out7, out8, out9;
     wire [25:0] final0, final1, final2, final3, final4, final5, final6, final7, final8, final9;
     wire out_valid;
