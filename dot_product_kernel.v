@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module dot_product_kernel(input clk,
-input GlobalReset,
+input Reset,
 input Input_Valid,
 input [1959:0] pixel,
 input [3723:0] weight,
@@ -28,7 +28,8 @@ output [25:0] result,
 output valid);
     parameter MULTI_DELAY = 6;
     parameter ADDER_DELAY = 2;
-    parameter finish_cycle = MULTI_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY;
+    parameter finish_cycle = MULTI_DELAY+ADDER_DELAY*8;
+    wire GlobalReset = ~Reset;
     wire [25:0] temp_0, temp_1, temp_2, temp_3, temp_4, temp_5, temp_6, temp_7, temp_8, temp_9, temp_10;
     wire [25:0] temp_11, temp_12, temp_13, temp_14, temp_15, temp_16, temp_17, temp_18, temp_19, temp_20;
     wire [25:0] temp_21, temp_22, temp_23, temp_24, temp_25, temp_26, temp_27, temp_28, temp_29, temp_30; 
@@ -466,10 +467,10 @@ output valid);
     FixedPointAdder f390(clk,GlobalReset,ReductionVII_0,ReductionVII_1,result);
     reg [4:0] counter;
     always @(posedge clk) begin
-        if(~GlobalReset) begin
+        if(~Reset || ~Input_Valid) begin
             counter<=0;
         end else if(counter==finish_cycle) begin
-            counter<=0;
+            counter<=1;
         end else begin
             counter<=counter+1;
         end

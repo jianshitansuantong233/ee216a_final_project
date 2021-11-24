@@ -1,19 +1,19 @@
 module compare(
     input clk,
-    input [25:0] final0,
-    input [25:0] final1,
-    input [25:0] final2,
-    input [25:0] final3,
-    input [25:0] final4,
-    input [25:0] final5,
-    input [25:0] final6,
-    input [25:0] final7,
-    input [25:0] final8,
-    input [25:0] final9,
+    input signed [25:0] final0,
+    input signed [25:0] final1,
+    input signed [25:0] final2,
+    input signed [25:0] final3,
+    input signed [25:0] final4,
+    input signed [25:0] final5,
+    input signed [25:0] final6,
+    input signed [25:0] final7,
+    input signed [25:0] final8,
+    input signed [25:0] final9,
     output reg [3:0] Image_Number
 );
 
-    reg [25:0] compare_0,compare_1,compare_2,compare_3,compare_4;
+    reg signed [25:0] compare_0,compare_1,compare_2,compare_3,compare_4;
     reg [3:0] index_0,index_1,index_2,index_3,index_4;
     always @(posedge clk) begin
 		if(final0>final1) begin
@@ -60,7 +60,7 @@ module compare(
 			index_4<=9;
 		end
 	end
-    reg [25:0] compareII_0,compareII_1;
+    reg signed [25:0] compareII_0,compareII_1;
     reg [3:0] indexII_0,indexII_1;
     always @(posedge clk) begin
 		if(compare_0>compare_1) begin
@@ -80,7 +80,7 @@ module compare(
 			indexII_1<=index_3;
 		end
 	end   
-    reg [25:0] compareIII_0;
+    reg signed [25:0] compareIII_0;
     reg [3:0] indexIII_0; 
     always @(posedge clk) begin
 		if(compareII_0>compareII_1) begin
