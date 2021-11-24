@@ -463,9 +463,7 @@ parameter finish_cycle = MULTI_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_D
     wire [25:0] ReductionVII_0, ReductionVII_1;
     FixedPointAdder f388(clk,GlobalReset,ReductionVI_0,ReductionVI_1,ReductionVII_0);
     FixedPointAdder f389(clk,GlobalReset,ReductionVI_2,ReductionII_48,ReductionVII_1);
-    wire [25:0] out;
-    FixedPointAdder f390(clk,GlobalReset,ReductionVII_0,ReductionVII_1,out);
-    assign result = out;
+    FixedPointAdder f390(clk,GlobalReset,ReductionVII_0,ReductionVII_1,result);
     reg [4:0] counter;
     always @(posedge clk) begin
         if(~GlobalReset) begin
