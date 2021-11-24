@@ -10201,16 +10201,16 @@ module Image_Classifier (
     FixedPointAdder f29(clk,GlobalReset,reduction9_0,reduction9_1,out9);
     
     
-    FixedPointAdder f30(clk,GlobalReset,out0,Wgt_0_784,final0);
-    FixedPointAdder f31(clk,GlobalReset,out1,Wgt_1_784,final1);
-    FixedPointAdder f32(clk,GlobalReset,out2,Wgt_2_784,final2);
-    FixedPointAdder f33(clk,GlobalReset,out3,Wgt_3_784,final3);
-    FixedPointAdder f34(clk,GlobalReset,out4,Wgt_4_784,final4);
-    FixedPointAdder f35(clk,GlobalReset,out5,Wgt_5_784,final5);
-    FixedPointAdder f36(clk,GlobalReset,out6,Wgt_6_784,final6);
-    FixedPointAdder f37(clk,GlobalReset,out7,Wgt_7_784,final7);
-    FixedPointAdder f38(clk,GlobalReset,out8,Wgt_8_784,final8);
-    FixedPointAdder f39(clk,GlobalReset,out9,Wgt_9_784,final9);
+    FixedPointAdder f30(clk,GlobalReset,out0,{7'b0000_000,Wgt_0_784},final0);
+    FixedPointAdder f31(clk,GlobalReset,out1,{7'b0000_000,Wgt_1_784},final1);
+    FixedPointAdder f32(clk,GlobalReset,out2,{7'b0000_000,Wgt_2_784},final2);
+    FixedPointAdder f33(clk,GlobalReset,out3,{7'b0000_000,Wgt_3_784},final3);
+    FixedPointAdder f34(clk,GlobalReset,out4,{7'b0000_000,Wgt_4_784},final4);
+    FixedPointAdder f35(clk,GlobalReset,out5,{7'b0000_000,Wgt_5_784},final5);
+    FixedPointAdder f36(clk,GlobalReset,out6,{7'b0000_000,Wgt_6_784},final6);
+    FixedPointAdder f37(clk,GlobalReset,out7,{7'b0000_000,Wgt_7_784},final7);
+    FixedPointAdder f38(clk,GlobalReset,out8,{7'b0000_000,Wgt_8_784},final8);
+    FixedPointAdder f39(clk,GlobalReset,out9,{7'b0000_000,Wgt_9_784},final9);
     parameter fc_finish = finish_cycle*40;
     parameter reduction_finish = fc_finish+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY;
     reg [9:0] global_counter;
