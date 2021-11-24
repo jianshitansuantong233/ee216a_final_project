@@ -8652,7 +8652,7 @@ module Image_Classifier (
     wire [14896:0] weight_9 ;
     reg [7839:0] pixels ;
     always @(posedge clk) begin
-        if(GlobalReset) begin
+        if(~GlobalReset) begin
             pixels<=0;
         end else if(Input_Valid) begin
             pixels <= {Pix_0, Pix_1, Pix_2, Pix_3, Pix_4, Pix_5, Pix_6, Pix_7, Pix_8, Pix_9, 
@@ -9775,7 +9775,7 @@ module Image_Classifier (
     parameter finish_cycle = MULTI_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY;
     reg [5:0] counter;
     always @(posedge clk) begin
-        if(GlobalReset) begin
+        if(~GlobalReset) begin
             counter<=0;
         end else if(counter == finish_cycle) begin
             counter<=0;
@@ -9784,7 +9784,7 @@ module Image_Classifier (
         end
     end
     always @(posedge clk) begin
-        if(GlobalReset) begin
+        if(~GlobalReset) begin
             state <= 0;
         end else if (counter==finish_cycle) begin
             state<=state+1;
@@ -9796,7 +9796,7 @@ module Image_Classifier (
     dot_product_kernel dot(clk,GlobalReset,Input_Valid, pixel_input, weight_input, out_temp, out_valid);
 
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out0_0<=0;
 		end else if(out_valid && state==OUT0_0) begin
 			out0_0<=out_temp;
@@ -9805,7 +9805,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out0_1<=0;
 		end else if(out_valid && state==OUT0_1) begin
 			out0_1<=out_temp;
@@ -9814,7 +9814,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out0_2<=0;
 		end else if(out_valid && state==OUT0_2) begin
 			out0_2<=out_temp;
@@ -9823,7 +9823,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out0_3<=0;
 		end else if(out_valid && state==OUT0_3) begin
 			out0_3<=out_temp;
@@ -9832,7 +9832,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out1_0<=0;
 		end else if(out_valid && state==OUT1_0) begin
 			out1_0<=out_temp;
@@ -9841,7 +9841,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out1_1<=0;
 		end else if(out_valid && state==OUT1_1) begin
 			out1_1<=out_temp;
@@ -9850,7 +9850,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out1_2<=0;
 		end else if(out_valid && state==OUT1_2) begin
 			out1_2<=out_temp;
@@ -9859,7 +9859,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out1_3<=0;
 		end else if(out_valid && state==OUT1_3) begin
 			out1_3<=out_temp;
@@ -9868,7 +9868,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out2_0<=0;
 		end else if(out_valid && state==OUT2_0) begin
 			out2_0<=out_temp;
@@ -9877,7 +9877,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out2_1<=0;
 		end else if(out_valid && state==OUT2_1) begin
 			out2_1<=out_temp;
@@ -9886,7 +9886,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out2_2<=0;
 		end else if(out_valid && state==OUT2_2) begin
 			out2_2<=out_temp;
@@ -9895,7 +9895,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out2_3<=0;
 		end else if(out_valid && state==OUT2_3) begin
 			out2_3<=out_temp;
@@ -9904,7 +9904,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out3_0<=0;
 		end else if(out_valid && state==OUT3_0) begin
 			out3_0<=out_temp;
@@ -9913,7 +9913,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out3_1<=0;
 		end else if(out_valid && state==OUT3_1) begin
 			out3_1<=out_temp;
@@ -9922,7 +9922,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out3_2<=0;
 		end else if(out_valid && state==OUT3_2) begin
 			out3_2<=out_temp;
@@ -9931,7 +9931,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out3_3<=0;
 		end else if(out_valid && state==OUT3_3) begin
 			out3_3<=out_temp;
@@ -9940,7 +9940,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out4_0<=0;
 		end else if(out_valid && state==OUT4_0) begin
 			out4_0<=out_temp;
@@ -9949,7 +9949,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out4_1<=0;
 		end else if(out_valid && state==OUT4_1) begin
 			out4_1<=out_temp;
@@ -9958,7 +9958,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out4_2<=0;
 		end else if(out_valid && state==OUT4_2) begin
 			out4_2<=out_temp;
@@ -9967,7 +9967,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out4_3<=0;
 		end else if(out_valid && state==OUT4_3) begin
 			out4_3<=out_temp;
@@ -9976,7 +9976,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out5_0<=0;
 		end else if(out_valid && state==OUT5_0) begin
 			out5_0<=out_temp;
@@ -9985,7 +9985,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out5_1<=0;
 		end else if(out_valid && state==OUT5_1) begin
 			out5_1<=out_temp;
@@ -9994,7 +9994,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out5_2<=0;
 		end else if(out_valid && state==OUT5_2) begin
 			out5_2<=out_temp;
@@ -10003,7 +10003,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out5_3<=0;
 		end else if(out_valid && state==OUT5_3) begin
 			out5_3<=out_temp;
@@ -10012,7 +10012,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out6_0<=0;
 		end else if(out_valid && state==OUT6_0) begin
 			out6_0<=out_temp;
@@ -10021,7 +10021,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out6_1<=0;
 		end else if(out_valid && state==OUT6_1) begin
 			out6_1<=out_temp;
@@ -10030,7 +10030,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out6_2<=0;
 		end else if(out_valid && state==OUT6_2) begin
 			out6_2<=out_temp;
@@ -10039,7 +10039,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out6_3<=0;
 		end else if(out_valid && state==OUT6_3) begin
 			out6_3<=out_temp;
@@ -10048,7 +10048,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out7_0<=0;
 		end else if(out_valid && state==OUT7_0) begin
 			out7_0<=out_temp;
@@ -10057,7 +10057,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out7_1<=0;
 		end else if(out_valid && state==OUT7_1) begin
 			out7_1<=out_temp;
@@ -10066,7 +10066,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out7_2<=0;
 		end else if(out_valid && state==OUT7_2) begin
 			out7_2<=out_temp;
@@ -10075,7 +10075,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out7_3<=0;
 		end else if(out_valid && state==OUT7_3) begin
 			out7_3<=out_temp;
@@ -10084,7 +10084,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out8_0<=0;
 		end else if(out_valid && state==OUT8_0) begin
 			out8_0<=out_temp;
@@ -10093,7 +10093,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out8_1<=0;
 		end else if(out_valid && state==OUT8_1) begin
 			out8_1<=out_temp;
@@ -10102,7 +10102,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out8_2<=0;
 		end else if(out_valid && state==OUT8_2) begin
 			out8_2<=out_temp;
@@ -10111,7 +10111,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out8_3<=0;
 		end else if(out_valid && state==OUT8_3) begin
 			out8_3<=out_temp;
@@ -10120,7 +10120,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out9_0<=0;
 		end else if(out_valid && state==OUT9_0) begin
 			out9_0<=out_temp;
@@ -10129,7 +10129,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out9_1<=0;
 		end else if(out_valid && state==OUT9_1) begin
 			out9_1<=out_temp;
@@ -10138,7 +10138,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out9_2<=0;
 		end else if(out_valid && state==OUT9_2) begin
 			out9_2<=out_temp;
@@ -10147,7 +10147,7 @@ module Image_Classifier (
 		end
 	end
 	always @(posedge clk) begin
-		if (GlobalReset) begin
+		if (~GlobalReset) begin
 			out9_3<=0;
 		end else if(out_valid && state==OUT9_3) begin
 			out9_3<=out_temp;
@@ -10201,21 +10201,21 @@ module Image_Classifier (
     FixedPointAdder f29(clk,GlobalReset,reduction9_0,reduction9_1,out9);
     
     
-    FixedPointAdder f30(clk,GlobalReset,out0,Wgt_0_784,final0);
-    FixedPointAdder f31(clk,GlobalReset,out1,Wgt_1_784,final1);
-    FixedPointAdder f32(clk,GlobalReset,out2,Wgt_2_784,final2);
-    FixedPointAdder f33(clk,GlobalReset,out3,Wgt_3_784,final3);
-    FixedPointAdder f34(clk,GlobalReset,out4,Wgt_4_784,final4);
-    FixedPointAdder f35(clk,GlobalReset,out5,Wgt_5_784,final5);
-    FixedPointAdder f36(clk,GlobalReset,out6,Wgt_6_784,final6);
-    FixedPointAdder f37(clk,GlobalReset,out7,Wgt_7_784,final7);
-    FixedPointAdder f38(clk,GlobalReset,out8,Wgt_8_784,final8);
-    FixedPointAdder f39(clk,GlobalReset,out9,Wgt_9_784,final9);
+    FixedPointAdder f30(clk,GlobalReset,out0,{7'b0000_000,Wgt_0_784},final0);
+    FixedPointAdder f31(clk,GlobalReset,out1,{7'b0000_000,Wgt_1_784},final1);
+    FixedPointAdder f32(clk,GlobalReset,out2,{7'b0000_000,Wgt_2_784},final2);
+    FixedPointAdder f33(clk,GlobalReset,out3,{7'b0000_000,Wgt_3_784},final3);
+    FixedPointAdder f34(clk,GlobalReset,out4,{7'b0000_000,Wgt_4_784},final4);
+    FixedPointAdder f35(clk,GlobalReset,out5,{7'b0000_000,Wgt_5_784},final5);
+    FixedPointAdder f36(clk,GlobalReset,out6,{7'b0000_000,Wgt_6_784},final6);
+    FixedPointAdder f37(clk,GlobalReset,out7,{7'b0000_000,Wgt_7_784},final7);
+    FixedPointAdder f38(clk,GlobalReset,out8,{7'b0000_000,Wgt_8_784},final8);
+    FixedPointAdder f39(clk,GlobalReset,out9,{7'b0000_000,Wgt_9_784},final9);
     parameter fc_finish = finish_cycle*40;
     parameter reduction_finish = fc_finish+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY;
     reg [9:0] global_counter;
     always @(posedge clk) begin
-        if(GlobalReset) begin
+        if(~GlobalReset) begin
             global_counter<=0;
         end else begin
             global_counter<=global_counter+1;

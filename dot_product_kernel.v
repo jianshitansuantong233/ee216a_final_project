@@ -468,7 +468,7 @@ parameter finish_cycle = MULTI_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY+ADDER_D
     assign result = out;
     reg [4:0] counter;
     always @(posedge clk) begin
-        if(GlobalReset) begin
+        if(~GlobalReset) begin
             counter<=0;
         end else if(counter==finish_cycle) begin
             counter<=0;
