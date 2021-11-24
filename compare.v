@@ -1,15 +1,15 @@
 module compare(
     input clk,
-    input final0,
-    input final1,
-    input final2,
-    input final3,
-    input final4,
-    input final5,
-    input final6,
-    input final7,
-    input final8,
-    input final9,
+    input [25:0] final0,
+    input [25:0] final1,
+    input [25:0] final2,
+    input [25:0] final3,
+    input [25:0] final4,
+    input [25:0] final5,
+    input [25:0] final6,
+    input [25:0] final7,
+    input [25:0] final8,
+    input [25:0] final9,
     output reg [3:0] Image_Number
 );
 
