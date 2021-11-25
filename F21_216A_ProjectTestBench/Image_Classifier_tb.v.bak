@@ -8708,6 +8708,7 @@ initial begin
 	else begin $display("Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED"); fal = fal + 1; end 
 	$display("-------------------------------------------------------------");
 	# (10*fullclock);
+#fullclock GlobalReset=1'b1;
 
 // assign the required numbers taken from Matlab
 	$display("------------- Starting to Test Image Number 2 -------------");
@@ -8729,6 +8730,7 @@ initial begin
 	else begin $display("Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED"); fal = fal + 1; end 
 	$display("-------------------------------------------------------------");
 	# (10*fullclock);
+#fullclock GlobalReset=1'b1;
 
 // assign the required numbers taken from Matlab
 	$display("------------- Starting to Test Image Number 3 -------------");
@@ -8750,6 +8752,7 @@ initial begin
 	else begin $display("Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED"); fal = fal + 1; end 
 	$display("-------------------------------------------------------------");
 	# (10*fullclock);
+#fullclock GlobalReset=1'b1;
 
 // assign the required numbers taken from Matlab
 	$display("------------- Starting to Test Image Number 4 -------------");
@@ -8771,6 +8774,7 @@ initial begin
 	else begin $display("Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED"); fal = fal + 1; end 
 	$display("-------------------------------------------------------------");
 	# (10*fullclock);
+#fullclock GlobalReset=1'b1;
 
 // assign the required numbers taken from Matlab
 	$display("------------- Starting to Test Image Number 5 -------------");
@@ -8792,6 +8796,7 @@ initial begin
 	else begin $display("Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED"); fal = fal + 1; end 
 	$display("-------------------------------------------------------------");
 	# (10*fullclock);
+#fullclock GlobalReset=1'b1;
 
 // assign the required numbers taken from Matlab
 	$display("------------- Starting to Test Image Number 6 -------------");
@@ -8813,6 +8818,7 @@ initial begin
 	else begin $display("Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED"); fal = fal + 1; end 
 	$display("-------------------------------------------------------------");
 	# (10*fullclock);
+#fullclock GlobalReset=1'b1;
 
 // assign the required numbers taken from Matlab
 	$display("------------- Starting to Test Image Number 7 -------------");
@@ -8834,6 +8840,7 @@ initial begin
 	else begin $display("Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED"); fal = fal + 1; end 
 	$display("-------------------------------------------------------------");
 	# (10*fullclock);
+#fullclock GlobalReset=1'b1;
 
 // assign the required numbers taken from Matlab
 	$display("------------- Starting to Test Image Number 8 -------------");
@@ -8855,6 +8862,7 @@ initial begin
 	else begin $display("Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED"); fal = fal + 1; end 
 	$display("-------------------------------------------------------------");
 	# (10*fullclock);
+#fullclock GlobalReset=1'b1;
 
 // assign the required numbers taken from Matlab
 	$display("------------- Starting to Test Image Number 9 -------------");
@@ -8876,6 +8884,7 @@ initial begin
 	else begin $display("Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED"); fal = fal + 1; end 
 	$display("-------------------------------------------------------------");
 	# (10*fullclock);
+#fullclock GlobalReset=1'b1;
 
 // assign the required numbers taken from Matlab
 	$display("------------- Starting to Test Image Number 10 -------------");
@@ -8897,6 +8906,7 @@ initial begin
 	else begin $display("Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED"); fal = fal + 1; end 
 	$display("-------------------------------------------------------------");
 	# (10*fullclock);
+#fullclock GlobalReset=1'b1;
 
 	$display("--------------------------------------------------------------");
 	$display("--------------------------------------------------------------");

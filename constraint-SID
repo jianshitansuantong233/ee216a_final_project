@@ -1,0 +1,27 @@
+ 
+****************************************
+Report : constraint
+        -verbose
+Design : Image_Classifier
+Version: G-2012.06-SP1
+Date   : Wed Nov 24 23:41:40 2021
+****************************************
+
+
+    Net: counter[6]
+
+    max_transition         0.04
+  - Transition Time        0.02
+  ------------------------------
+    Slack                  0.02  (MET)
+
+
+    Net: n435969
+
+    max_capacitance       32.00
+  - Capacitance           31.86
+  ------------------------------
+    Slack                  0.14  (MET)
+
+
+1

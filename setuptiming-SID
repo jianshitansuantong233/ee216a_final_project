@@ -1,0 +1,236 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 2
+        -max_paths 10
+Design : Image_Classifier
+Version: G-2012.06-SP1
+Date   : Wed Nov 24 23:40:10 2021
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ff1p16vn40c   Library: saed32rvt_ff1p16vn40c
+Wire Load Model Mode: enclosed
+
+  Startpoint: global_counter_reg[6]
+              (rising edge-triggered flip-flop)
+  Endpoint: Output_Valid
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  global_counter_reg[6]/CLK (DFFSSRX1_RVT)                0.00 #     0.00 r
+  global_counter_reg[6]/QN (DFFSSRX1_RVT)                 0.04       0.04 f
+  U322686/Y (OR3X1_RVT)                                   0.70       0.73 f
+  U322685/Y (INVX0_RVT)                                   1.56       2.29 r
+  U322681/Y (NAND4X0_RVT)                                 0.15       2.44 f
+  U279997/Y (INVX0_RVT)                                   0.62       3.06 r
+  Output_Valid (out)                                      0.00       3.06 r
+  data arrival time                                                  3.06
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: global_counter_reg[6]
+              (rising edge-triggered flip-flop)
+  Endpoint: Output_Valid
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  global_counter_reg[6]/CLK (DFFSSRX1_RVT)                0.00 #     0.00 r
+  global_counter_reg[6]/QN (DFFSSRX1_RVT)                 0.04       0.04 f
+  U322686/Y (OR3X1_RVT)                                   0.70       0.73 f
+  U322685/Y (INVX0_RVT)                                   1.56       2.29 r
+  U322681/Y (NAND4X0_RVT)                                 0.15       2.44 f
+  U279997/Y (INVX0_RVT)                                   0.62       3.06 r
+  Output_Valid (out)                                      0.00       3.06 r
+  data arrival time                                                  3.06
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: c/Image_Number_reg[1]
+              (rising edge-triggered flip-flop)
+  Endpoint: Image_Number[1]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  c/Image_Number_reg[1]/CLK (DFFSSRX1_RVT)                0.00       0.00 r
+  c/Image_Number_reg[1]/Q (DFFSSRX1_RVT)                  0.05       0.05 f
+  Image_Number[1] (out)                                   0.00       0.05 f
+  data arrival time                                                  0.05
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: c/Image_Number_reg[2]
+              (rising edge-triggered flip-flop)
+  Endpoint: Image_Number[2]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  c/Image_Number_reg[2]/CLK (DFFSSRX1_RVT)                0.00       0.00 r
+  c/Image_Number_reg[2]/Q (DFFSSRX1_RVT)                  0.05       0.05 f
+  Image_Number[2] (out)                                   0.00       0.05 f
+  data arrival time                                                  0.05
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: c/Image_Number_reg[0]
+              (rising edge-triggered flip-flop)
+  Endpoint: Image_Number[0]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  c/Image_Number_reg[0]/CLK (DFFX1_RVT)                   0.00       0.00 r
+  c/Image_Number_reg[0]/Q (DFFX1_RVT)                     0.05       0.05 f
+  Image_Number[0] (out)                                   0.00       0.05 f
+  data arrival time                                                  0.05
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: c/Image_Number_reg[3]
+              (rising edge-triggered flip-flop)
+  Endpoint: Image_Number[3]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  c/Image_Number_reg[3]/CLK (DFFX1_RVT)                   0.00       0.00 r
+  c/Image_Number_reg[3]/Q (DFFX1_RVT)                     0.05       0.05 f
+  Image_Number[3] (out)                                   0.00       0.05 f
+  data arrival time                                                  0.05
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: c/Image_Number_reg[0]
+              (rising edge-triggered flip-flop)
+  Endpoint: Image_Number[0]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  c/Image_Number_reg[0]/CLK (DFFX1_RVT)                   0.00       0.00 r
+  c/Image_Number_reg[0]/Q (DFFX1_RVT)                     0.04       0.04 r
+  Image_Number[0] (out)                                   0.00       0.05 r
+  data arrival time                                                  0.05
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: c/Image_Number_reg[3]
+              (rising edge-triggered flip-flop)
+  Endpoint: Image_Number[3]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  c/Image_Number_reg[3]/CLK (DFFX1_RVT)                   0.00       0.00 r
+  c/Image_Number_reg[3]/Q (DFFX1_RVT)                     0.04       0.04 r
+  Image_Number[3] (out)                                   0.00       0.05 r
+  data arrival time                                                  0.05
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: c/Image_Number_reg[1]
+              (rising edge-triggered flip-flop)
+  Endpoint: Image_Number[1]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  c/Image_Number_reg[1]/CLK (DFFSSRX1_RVT)                0.00       0.00 r
+  c/Image_Number_reg[1]/Q (DFFSSRX1_RVT)                  0.04       0.04 r
+  Image_Number[1] (out)                                   0.00       0.04 r
+  data arrival time                                                  0.04
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: c/Image_Number_reg[2]
+              (rising edge-triggered flip-flop)
+  Endpoint: Image_Number[2]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  c/Image_Number_reg[2]/CLK (DFFSSRX1_RVT)                0.00       0.00 r
+  c/Image_Number_reg[2]/Q (DFFSSRX1_RVT)                  0.04       0.04 r
+  Image_Number[2] (out)                                   0.00       0.04 r
+  data arrival time                                                  0.04
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
