@@ -109,3 +109,201 @@ run -all
 # ** Note: $stop    : /w/home.24/ee/ugrad/xuh/ee216a/ee216a_final_project/F21_216A_ProjectTestBench/Image_Classifier_tb.v(8906)
 #    Time: 14091 ns  Iteration: 0  Instance: /Image_Classifier_tb
 # Break in Module Image_Classifier_tb at /w/home.24/ee/ugrad/xuh/ee216a/ee216a_final_project/F21_216A_ProjectTestBench/Image_Classifier_tb.v line 8906
+# Compile of FixedPointAdder.v was successful.
+# Compile of FixedPointMultiplier.v was successful.
+# Compile of SynLib.v was successful.
+# Compile of Image_Classifier_tb.v was successful.
+# Compile of compare.v was successful.
+# Compile of dot_product_kernel.v was successful.
+# Compile of Image_Classifier.v was successful.
+# 7 compiles, 0 failed with no errors.
+vsim -voptargs="+acc" work.Image_Classifier_tb
+# End time: 21:01:19 on Nov 23,2021, Elapsed time: 0:06:14
+# Errors: 0, Warnings: 4
+# vsim -voptargs=""+acc"" work.Image_Classifier_tb 
+# Start time: 21:01:19 on Nov 23,2021
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.Image_Classifier_tb(fast)
+# Loading work.Image_Classifier(fast)
+# Loading work.dot_product_kernel(fast)
+# Loading work.FixedPointMultiplier(fast)
+# Loading work.synDelayWithEnable(fast)
+# Loading work.synDelayWithEnableGeneric(fast)
+# Loading work.synDelayWithEnable(fast__1)
+# Loading work.singleDelayWithEnableGeneric(fast)
+# Loading work.synDelayWithEnable(fast__2)
+# Loading work.singleDelayWithEnableGeneric(fast__1)
+# Loading work.FixedPointAdder(fast)
+# Loading work.synDelayWithEnable(fast__3)
+# Loading work.synDelayWithEnableGeneric(fast__1)
+# Loading work.synBusSatRnd(fast)
+# Loading work.compare(fast)
+run -all
+# ------------- Starting to Test Image Number 1 -------------
+# Actual Number is 0111
+#               889 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 2 -------------
+# Actual Number is 0010
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 3 -------------
+# Actual Number is 0001
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 4 -------------
+# Actual Number is 0000
+#                15 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 5 -------------
+# Actual Number is 0100
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 6 -------------
+# Actual Number is 0001
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 7 -------------
+# Actual Number is 0100
+#                15 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 8 -------------
+# Actual Number is 1001
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Correct Output!! The Classifier has sucessfully classified this image -- PASSED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 9 -------------
+# Actual Number is 0101
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 10 -------------
+# Actual Number is 1001
+#                15 clks of pocessing done
+# Estimated Output Number is : 1001
+# Correct Output!! The Classifier has sucessfully classified this image -- PASSED
+# -------------------------------------------------------------
+# --------------------------------------------------------------
+# --------------------------------------------------------------
+# ---------------------- Total Success Rate =          20 Percent
+# --------------------------------------------------------------
+# ** Note: $stop    : /w/home.24/ee/ugrad/xuh/ee216a/ee216a_final_project/F21_216A_ProjectTestBench/Image_Classifier_tb.v(8906)
+#    Time: 14091 ns  Iteration: 0  Instance: /Image_Classifier_tb
+# Break in Module Image_Classifier_tb at /w/home.24/ee/ugrad/xuh/ee216a/ee216a_final_project/F21_216A_ProjectTestBench/Image_Classifier_tb.v line 8906
+add wave -position insertpoint  \
+{sim:/Image_Classifier_tb/Pix_763[9]}
+vsim -voptargs="+acc" work.Image_Classifier_tb
+# End time: 21:17:32 on Nov 23,2021, Elapsed time: 0:16:13
+# Errors: 0, Warnings: 1
+# vsim -voptargs=""+acc"" work.Image_Classifier_tb 
+# Start time: 21:17:32 on Nov 23,2021
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading work.Image_Classifier_tb(fast)
+# Loading work.Image_Classifier(fast)
+# Loading work.dot_product_kernel(fast)
+# Loading work.FixedPointMultiplier(fast)
+# Loading work.synDelayWithEnable(fast)
+# Loading work.synDelayWithEnableGeneric(fast)
+# Loading work.synDelayWithEnable(fast__1)
+# Loading work.singleDelayWithEnableGeneric(fast)
+# Loading work.synDelayWithEnable(fast__2)
+# Loading work.singleDelayWithEnableGeneric(fast__1)
+# Loading work.FixedPointAdder(fast)
+# Loading work.synDelayWithEnable(fast__3)
+# Loading work.synDelayWithEnableGeneric(fast__1)
+# Loading work.synBusSatRnd(fast)
+# Loading work.compare(fast)
+add wave  \
+sim:/Image_Classifier_tb/clk \
+sim:/Image_Classifier_tb/GlobalReset \
+sim:/Image_Classifier_tb/ActualNumber \
+sim:/Image_Classifier_tb/i \
+sim:/Image_Classifier_tb/fal \
+sim:/Image_Classifier_tb/tot \
+sim:/Image_Classifier_tb/Input_Valid \
+sim:/Image_Classifier_tb/Image_Number \
+sim:/Image_Classifier_tb/Output_Valid
+run -all
+# ------------- Starting to Test Image Number 1 -------------
+# Actual Number is 0111
+#               889 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 2 -------------
+# Actual Number is 0010
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 3 -------------
+# Actual Number is 0001
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 4 -------------
+# Actual Number is 0000
+#                15 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 5 -------------
+# Actual Number is 0100
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 6 -------------
+# Actual Number is 0001
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 7 -------------
+# Actual Number is 0100
+#                15 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 8 -------------
+# Actual Number is 1001
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Correct Output!! The Classifier has sucessfully classified this image -- PASSED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 9 -------------
+# Actual Number is 0101
+#              1000 clks of pocessing done
+# Estimated Output Number is : 1001
+# Uh Oh! Your Classfier is showing the wrong output for this Image -- FAILED
+# -------------------------------------------------------------
+# ------------- Starting to Test Image Number 10 -------------
+# Actual Number is 1001
+#                15 clks of pocessing done
+# Estimated Output Number is : 1001
+# Correct Output!! The Classifier has sucessfully classified this image -- PASSED
+# -------------------------------------------------------------
+# --------------------------------------------------------------
+# --------------------------------------------------------------
+# ---------------------- Total Success Rate =          20 Percent
+# --------------------------------------------------------------
+# ** Note: $stop    : /w/home.24/ee/ugrad/xuh/ee216a/ee216a_final_project/F21_216A_ProjectTestBench/Image_Classifier_tb.v(8906)
+#    Time: 14091 ns  Iteration: 0  Instance: /Image_Classifier_tb
+# Break in Module Image_Classifier_tb at /w/home.24/ee/ugrad/xuh/ee216a/ee216a_final_project/F21_216A_ProjectTestBench/Image_Classifier_tb.v line 8906

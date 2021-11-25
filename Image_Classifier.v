@@ -9792,7 +9792,7 @@ module Image_Classifier (
             state <= state;
         end
     end
-    
+    wire [25:0] out_temp;
     dot_product_kernel dot(clk,GlobalReset,Input_Valid, pixel_input, weight_input, out_temp, out_valid);
 
 	always @(posedge clk) begin
