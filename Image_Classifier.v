@@ -9800,7 +9800,7 @@ module Image_Classifier (
         end
     end    
     wire [25:0] out_temp;    
-    wire kernel_operation==(global_counter>0 && global_counter<fc_finish);
+    wire kernel_operation=(global_counter>0 && global_counter<fc_finish);
     dot_product_kernel dot(clk,GlobalReset,kernel_operation, pixel_input, weight_input, out_temp, out_valid);
 
 	always @(posedge clk) begin

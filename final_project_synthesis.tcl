@@ -1,4 +1,4 @@
-// final_project_synthesis.tcl
+#final_project_synthesis.tcl
 
 remove_design -all
 set hdlin_vrlg_std "2001"
