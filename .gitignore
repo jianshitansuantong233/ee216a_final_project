@@ -1,0 +1,10 @@
+*.mr
+*.bak
+*.mti
+*.pvl
+*.syn
+*.log
+*.wlf
+*.svf
+*.mpf
+work/*

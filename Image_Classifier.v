@@ -9599,7 +9599,7 @@ module Image_Classifier (
     reg [5:0] state;
     reg [3723:0] weight_input;
     reg [1959:0] pixel_input;
-    always @(*) begin
+    always @(posedge clk) begin
         case(state)
             OUT0_0: begin
                 weight_input<=weight_0[3723:0];
@@ -9800,7 +9800,7 @@ module Image_Classifier (
         end
     end    
     wire [25:0] out_temp;    
-    wire kernel_operation=(global_counter==0&&start_signal) || (global_counter>0 && global_counter<fc_finish);
+    wire kernel_operation==(global_counter>0 && global_counter<fc_finish);
     dot_product_kernel dot(clk,GlobalReset,kernel_operation, pixel_input, weight_input, out_temp, out_valid);
 
 	always @(posedge clk) begin
