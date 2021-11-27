@@ -1,34 +1,11 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 11/03/2021 03:46:44 PM
-// Design Name: 
-// Module Name: dot_product_kernel
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
 module dot_product_kernel(input clk,
 input Reset,
 input Input_Valid,
 input [1959:0] pixel,
 input [3723:0] weight,
-output [25:0] result,
-output valid);
-    parameter MULTI_DELAY = 6;
-    parameter ADDER_DELAY = 2;
-    parameter finish_cycle = MULTI_DELAY+ADDER_DELAY*8;
+output reg [25:0] result);
     wire GlobalReset = ~Reset;
     wire [25:0] temp_0, temp_1, temp_2, temp_3, temp_4, temp_5, temp_6, temp_7, temp_8, temp_9, temp_10;
     wire [25:0] temp_11, temp_12, temp_13, temp_14, temp_15, temp_16, temp_17, temp_18, temp_19, temp_20;
@@ -464,16 +441,10 @@ output valid);
     wire [25:0] ReductionVII_0, ReductionVII_1;
     FixedPointAdder f388(clk,GlobalReset,ReductionVI_0,ReductionVI_1,ReductionVII_0);
     FixedPointAdder f389(clk,GlobalReset,ReductionVI_2,ReductionII_48,ReductionVII_1);
-    FixedPointAdder f390(clk,GlobalReset,ReductionVII_0,ReductionVII_1,result);
-    reg [4:0] counter;
+    wire [25:0] ReductionVIII_0;
+    FixedPointAdder f390(clk,GlobalReset,ReductionVII_0,ReductionVII_1,ReductionVIII_0);
     always @(posedge clk) begin
-        if(~Reset || ~Input_Valid) begin
-            counter<=0;
-        end else if(counter==finish_cycle) begin
-            counter<=1;
-        end else begin
-            counter<=counter+1;
-        end
+        result<=ReductionVIII_0;
     end
-    assign valid = (counter==finish_cycle);
+    
 endmodule

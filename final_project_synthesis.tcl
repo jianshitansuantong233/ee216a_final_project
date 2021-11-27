@@ -35,6 +35,7 @@ create_clock -name "clk" -period $Tclk [get_ports "clk"]
 set_fix_hold clk
 set_dont_touch_network [get_clocks "clk"]
 set_clock_uncertainty $TCU [get_clocks "clk"]
+set_propagated_clock [all_clocks]
 
 set_input_delay $IN_DEL -clock "clk" $ALL_IN_BUT_CLK
 set_input_delay -min $IN_DEL_MIN -clock "clk" $ALL_IN_BUT_CLK
@@ -44,12 +45,19 @@ set_output_delay -min $OUT_DEL_MIN -clock "clk" [all_outputs]
 set_max_area 0.0
 
 ungroup -flatten -all
+#check_design > check_1
 uniquify
 
-compile_ultra
 
-report_timing -path full -delay min -max_paths 10 -nworst 2 > holdtiming-SID
-report_timing -path full -delay max -max_paths 10 -nworst 2 > setuptiming-SID
+#compile -only_design_rule
+#check_design >check_2
+#compile -map high
+#compile -boundary_optimization
+#compile -only_hold_time
+compile_ultra -timing_high_effort_script -top
+
+report_timing -path full -delay min -max_paths 100 -nworst 2 > holdtiming-SID
+report_timing -path full -delay max -max_paths 10000 -nworst 2 > setuptiming-SID
 report_area -hierarchy > area-SID
 report_power -hier -hier_level 2 > power-SID
 report_resources > resources-SID
@@ -59,5 +67,4 @@ check_timing > timing-SID
 
 write -hierarchy -format verilog -output $DESIGN_NAME.vg
 write_sdf -version 1.0 -context verilog $DESIGN_NAME.sdf
-set_propagated_clock [all_clocks]
 write_sdc $DESIGN_NAME.sdc

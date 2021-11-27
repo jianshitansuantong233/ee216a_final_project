@@ -9553,7 +9553,6 @@ module Image_Classifier (
     reg [25:0] out9_0, out9_1, out9_2, out9_3 ;
     wire [25:0] out0, out1, out2, out3, out4, out5, out6, out7, out8, out9;
     wire [25:0] final0, final1, final2, final3, final4, final5, final6, final7, final8, final9;
-    wire out_valid;
     wire start_signal;
     posedge_detect d(clk,GlobalReset,Input_Valid,start_signal);
     parameter OUT0_0 = 6'b000000;
@@ -9596,11 +9595,33 @@ module Image_Classifier (
     parameter OUT9_1 = 6'b100101;
     parameter OUT9_2 = 6'b100110;
     parameter OUT9_3 = 6'b100111;
-    reg [5:0] state;
+    reg [5:0] input_state;
+    reg [5:0] input_state_d1;
+    reg [5:0] input_state_d2;
+    reg [5:0] input_state_d3;
+    reg [5:0] input_state_d4;
+    reg [5:0] input_state_d5;
+    reg [5:0] input_state_d6;
+    reg [5:0] input_state_d7;
+    reg [5:0] input_state_d8;
+    reg [5:0] input_state_d9;
+    reg [5:0] input_state_d10;    
+    always @(posedge clk) begin
+        input_state_d1 <= input_state;
+        input_state_d2 <= input_state_d1;
+        input_state_d3 <= input_state_d2;
+        input_state_d4 <= input_state_d3;
+        input_state_d5 <= input_state_d4;
+        input_state_d6 <= input_state_d5;
+        input_state_d7 <= input_state_d6;
+        input_state_d8 <= input_state_d7;
+        input_state_d9 <= input_state_d8; 
+        input_state_d10 <= input_state_d9; 
+    end
     reg [3723:0] weight_input;
     reg [1959:0] pixel_input;
     always @(posedge clk) begin
-        case(state)
+        case(input_state_d1)
             OUT0_0: begin
                 weight_input<=weight_0[3723:0];
                 pixel_input<=pixels[1959:0];
@@ -9774,8 +9795,9 @@ module Image_Classifier (
     end
     parameter MULTI_DELAY = 6;
     parameter ADDER_DELAY = 2;
-    parameter finish_cycle = MULTI_DELAY+ADDER_DELAY*8;
-    parameter fc_finish = finish_cycle*40;
+    parameter finish_cycle = MULTI_DELAY;
+    parameter fc_finish = finish_cycle*40+ADDER_DELAY*8+1;
+    parameter II = MULTI_DELAY+ADDER_DELAY*8+1;
     parameter reduction_finish = fc_finish+ADDER_DELAY+ADDER_DELAY+ADDER_DELAY;
     reg [9:0] global_counter;
     reg [9:0] counter;
@@ -9792,16 +9814,32 @@ module Image_Classifier (
     end
     always @(posedge clk) begin
         if(~GlobalReset || global_counter==0) begin
-            state <= 0;
+            input_state <= 0;
         end else if (counter%finish_cycle==finish_cycle-1) begin
+            input_state <= input_state+1;
+        end else begin
+            input_state<=input_state;
+        end
+    end   
+     
+    reg [5:0] state;
+    reg out_valid;
+    always @(posedge clk) begin
+        if(~GlobalReset || global_counter==0) begin
+            state <= 0;
+            out_valid<=0;
+        end else if (counter>II && (counter-II)%finish_cycle==1)begin
+            out_valid<=1;
             state <= state+1;
         end else begin
+            out_valid<=0;
             state<=state;
         end
-    end    
+    end 
+    
     wire [25:0] out_temp;    
     wire kernel_operation=(global_counter>0 && global_counter<fc_finish);
-    dot_product_kernel dot(clk,GlobalReset,kernel_operation, pixel_input, weight_input, out_temp, out_valid);
+    dot_product_kernel dot(clk&kernel_operation,GlobalReset,kernel_operation, pixel_input, weight_input, out_temp);
 
 	always @(posedge clk) begin
 		if (~GlobalReset || global_counter==0) begin
@@ -10164,7 +10202,7 @@ module Image_Classifier (
 		end
 	end    
 
-    
+    wire reduction_operation = global_counter>fc_finish+1;
     wire [25:0] reduction0_0, reduction0_1;
     wire [25:0] reduction1_0, reduction1_1;
     wire [25:0] reduction2_0, reduction2_1;
@@ -10176,49 +10214,49 @@ module Image_Classifier (
     wire [25:0] reduction8_0, reduction8_1;
     wire [25:0] reduction9_0, reduction9_1;
 
-    FixedPointAdder f0(clk,~GlobalReset,out0_0,out0_1,reduction0_0);
-    FixedPointAdder f1(clk,~GlobalReset,out0_2,out0_3,reduction0_1);
-    FixedPointAdder f2(clk,~GlobalReset,out1_0,out1_1,reduction1_0);
-    FixedPointAdder f3(clk,~GlobalReset,out1_2,out1_3,reduction1_1);    
-    FixedPointAdder f4(clk,~GlobalReset,out2_0,out2_1,reduction2_0);
-    FixedPointAdder f5(clk,~GlobalReset,out2_2,out2_3,reduction2_1);    
-    FixedPointAdder f6(clk,~GlobalReset,out3_0,out3_1,reduction3_0);
-    FixedPointAdder f7(clk,~GlobalReset,out3_2,out3_3,reduction3_1);    
-    FixedPointAdder f8(clk,~GlobalReset,out4_0,out4_1,reduction4_0);
-    FixedPointAdder f9(clk,~GlobalReset,out4_2,out4_3,reduction4_1);    
-    FixedPointAdder f10(clk,~GlobalReset,out5_0,out5_1,reduction5_0);
-    FixedPointAdder f11(clk,~GlobalReset,out5_2,out5_3,reduction5_1);    
-    FixedPointAdder f12(clk,~GlobalReset,out6_0,out6_1,reduction6_0);
-    FixedPointAdder f13(clk,~GlobalReset,out6_2,out6_3,reduction6_1);    
-    FixedPointAdder f14(clk,~GlobalReset,out7_0,out7_1,reduction7_0);
-    FixedPointAdder f15(clk,~GlobalReset,out7_2,out7_3,reduction7_1);    
-    FixedPointAdder f16(clk,~GlobalReset,out8_0,out8_1,reduction8_0);
-    FixedPointAdder f17(clk,~GlobalReset,out8_2,out8_3,reduction8_1);    
-    FixedPointAdder f18(clk,~GlobalReset,out9_0,out9_1,reduction9_0);
-    FixedPointAdder f19(clk,~GlobalReset,out9_2,out9_3,reduction9_1);    
+    FixedPointAdder f0(clk&reduction_operation,~GlobalReset,out0_0,out0_1,reduction0_0);
+    FixedPointAdder f1(clk&reduction_operation,~GlobalReset,out0_2,out0_3,reduction0_1);
+    FixedPointAdder f2(clk&reduction_operation,~GlobalReset,out1_0,out1_1,reduction1_0);
+    FixedPointAdder f3(clk&reduction_operation,~GlobalReset,out1_2,out1_3,reduction1_1);    
+    FixedPointAdder f4(clk&reduction_operation,~GlobalReset,out2_0,out2_1,reduction2_0);
+    FixedPointAdder f5(clk&reduction_operation,~GlobalReset,out2_2,out2_3,reduction2_1);    
+    FixedPointAdder f6(clk&reduction_operation,~GlobalReset,out3_0,out3_1,reduction3_0);
+    FixedPointAdder f7(clk&reduction_operation,~GlobalReset,out3_2,out3_3,reduction3_1);    
+    FixedPointAdder f8(clk&reduction_operation,~GlobalReset,out4_0,out4_1,reduction4_0);
+    FixedPointAdder f9(clk&reduction_operation,~GlobalReset,out4_2,out4_3,reduction4_1);    
+    FixedPointAdder f10(clk&reduction_operation,~GlobalReset,out5_0,out5_1,reduction5_0);
+    FixedPointAdder f11(clk&reduction_operation,~GlobalReset,out5_2,out5_3,reduction5_1);    
+    FixedPointAdder f12(clk&reduction_operation,~GlobalReset,out6_0,out6_1,reduction6_0);
+    FixedPointAdder f13(clk&reduction_operation,~GlobalReset,out6_2,out6_3,reduction6_1);    
+    FixedPointAdder f14(clk&reduction_operation,~GlobalReset,out7_0,out7_1,reduction7_0);
+    FixedPointAdder f15(clk&reduction_operation,~GlobalReset,out7_2,out7_3,reduction7_1);    
+    FixedPointAdder f16(clk&reduction_operation,~GlobalReset,out8_0,out8_1,reduction8_0);
+    FixedPointAdder f17(clk&reduction_operation,~GlobalReset,out8_2,out8_3,reduction8_1);    
+    FixedPointAdder f18(clk&reduction_operation,~GlobalReset,out9_0,out9_1,reduction9_0);
+    FixedPointAdder f19(clk&reduction_operation,~GlobalReset,out9_2,out9_3,reduction9_1);    
 
-    FixedPointAdder f20(clk,~GlobalReset,reduction0_0,reduction0_1,out0);
-    FixedPointAdder f21(clk,~GlobalReset,reduction1_0,reduction1_1,out1);
-    FixedPointAdder f22(clk,~GlobalReset,reduction2_0,reduction2_1,out2);
-    FixedPointAdder f23(clk,~GlobalReset,reduction3_0,reduction3_1,out3);
-    FixedPointAdder f24(clk,~GlobalReset,reduction4_0,reduction4_1,out4);
-    FixedPointAdder f25(clk,~GlobalReset,reduction5_0,reduction5_1,out5);
-    FixedPointAdder f26(clk,~GlobalReset,reduction6_0,reduction6_1,out6);
-    FixedPointAdder f27(clk,~GlobalReset,reduction7_0,reduction7_1,out7);
-    FixedPointAdder f28(clk,~GlobalReset,reduction8_0,reduction8_1,out8);
-    FixedPointAdder f29(clk,~GlobalReset,reduction9_0,reduction9_1,out9);
+    FixedPointAdder f20(clk&reduction_operation,~GlobalReset,reduction0_0,reduction0_1,out0);
+    FixedPointAdder f21(clk&reduction_operation,~GlobalReset,reduction1_0,reduction1_1,out1);
+    FixedPointAdder f22(clk&reduction_operation,~GlobalReset,reduction2_0,reduction2_1,out2);
+    FixedPointAdder f23(clk&reduction_operation,~GlobalReset,reduction3_0,reduction3_1,out3);
+    FixedPointAdder f24(clk&reduction_operation,~GlobalReset,reduction4_0,reduction4_1,out4);
+    FixedPointAdder f25(clk&reduction_operation,~GlobalReset,reduction5_0,reduction5_1,out5);
+    FixedPointAdder f26(clk&reduction_operation,~GlobalReset,reduction6_0,reduction6_1,out6);
+    FixedPointAdder f27(clk&reduction_operation,~GlobalReset,reduction7_0,reduction7_1,out7);
+    FixedPointAdder f28(clk&reduction_operation,~GlobalReset,reduction8_0,reduction8_1,out8);
+    FixedPointAdder f29(clk&reduction_operation,~GlobalReset,reduction9_0,reduction9_1,out9);
     
     
-    FixedPointAdder f30(clk,~GlobalReset,out0,{{7{Wgt_0_784[18]}},Wgt_0_784},final0);
-    FixedPointAdder f31(clk,~GlobalReset,out1,{{7{Wgt_1_784[18]}},Wgt_1_784},final1);
-    FixedPointAdder f32(clk,~GlobalReset,out2,{{7{Wgt_2_784[18]}},Wgt_2_784},final2);
-    FixedPointAdder f33(clk,~GlobalReset,out3,{{7{Wgt_3_784[18]}},Wgt_3_784},final3);
-    FixedPointAdder f34(clk,~GlobalReset,out4,{{7{Wgt_4_784[18]}},Wgt_4_784},final4);
-    FixedPointAdder f35(clk,~GlobalReset,out5,{{7{Wgt_5_784[18]}},Wgt_5_784},final5);
-    FixedPointAdder f36(clk,~GlobalReset,out6,{{7{Wgt_6_784[18]}},Wgt_6_784},final6);
-    FixedPointAdder f37(clk,~GlobalReset,out7,{{7{Wgt_7_784[18]}},Wgt_7_784},final7);
-    FixedPointAdder f38(clk,~GlobalReset,out8,{{7{Wgt_8_784[18]}},Wgt_8_784},final8);
-    FixedPointAdder f39(clk,~GlobalReset,out9,{{7{Wgt_9_784[18]}},Wgt_9_784},final9);
+    FixedPointAdder f30(clk&reduction_operation,~GlobalReset,out0,{{7{Wgt_0_784[18]}},Wgt_0_784},final0);
+    FixedPointAdder f31(clk&reduction_operation,~GlobalReset,out1,{{7{Wgt_1_784[18]}},Wgt_1_784},final1);
+    FixedPointAdder f32(clk&reduction_operation,~GlobalReset,out2,{{7{Wgt_2_784[18]}},Wgt_2_784},final2);
+    FixedPointAdder f33(clk&reduction_operation,~GlobalReset,out3,{{7{Wgt_3_784[18]}},Wgt_3_784},final3);
+    FixedPointAdder f34(clk&reduction_operation,~GlobalReset,out4,{{7{Wgt_4_784[18]}},Wgt_4_784},final4);
+    FixedPointAdder f35(clk&reduction_operation,~GlobalReset,out5,{{7{Wgt_5_784[18]}},Wgt_5_784},final5);
+    FixedPointAdder f36(clk&reduction_operation,~GlobalReset,out6,{{7{Wgt_6_784[18]}},Wgt_6_784},final6);
+    FixedPointAdder f37(clk&reduction_operation,~GlobalReset,out7,{{7{Wgt_7_784[18]}},Wgt_7_784},final7);
+    FixedPointAdder f38(clk&reduction_operation,~GlobalReset,out8,{{7{Wgt_8_784[18]}},Wgt_8_784},final8);
+    FixedPointAdder f39(clk&reduction_operation,~GlobalReset,out9,{{7{Wgt_9_784[18]}},Wgt_9_784},final9);
     
     always @(posedge clk) begin
         if(~GlobalReset) begin
@@ -10227,7 +10265,7 @@ module Image_Classifier (
             global_counter<=1;
         end else if(global_counter==0) begin
             global_counter<=0;
-        end else if(global_counter==reduction_finish+4) begin
+        end else if(global_counter==reduction_finish+5) begin
             global_counter<=0;
         end else begin
             global_counter<=global_counter+1;
@@ -10235,5 +10273,5 @@ module Image_Classifier (
     end
     wire compare_enable=global_counter>reduction_finish;
     compare c(clk&compare_enable,final0,final1,final2,final3,final4,final5,final6,final7,final8,final9,Image_Number);
-    assign Output_Valid = (global_counter==reduction_finish+4);
+    assign Output_Valid = (global_counter==reduction_finish+5);
  endmodule

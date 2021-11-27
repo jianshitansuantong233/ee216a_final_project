@@ -4,24 +4,139 @@ Report : constraint
         -verbose
 Design : Image_Classifier
 Version: G-2012.06-SP1
-Date   : Wed Nov 24 23:41:40 2021
+Date   : Sat Nov 27 10:50:49 2021
 ****************************************
 
 
-    Net: counter[6]
+  Startpoint: Wgt_0_784[0]
+              (input port clocked by clk)
+  Endpoint: f30/Adder_26b_18f_block.delayForLatency_block/GenBlock.theDelay/delayline_reg[0][25]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (propagated)                        0.00       0.00
+  input external delay                                    0.60       0.60 r
+  Wgt_0_784[0] (in)                                       0.00       0.60 r
+  U261962/Y (NAND2X0_RVT)                                 0.01       0.61 f
+  U188825/Y (INVX1_RVT)                                   0.01       0.62 r
+  intadd_204/U26/CO (FADDX1_RVT)                          0.03       0.65 r
+  intadd_204/U25/CO (FADDX1_RVT)                          0.03       0.68 r
+  intadd_204/U24/CO (FADDX1_RVT)                          0.03       0.71 r
+  intadd_204/U23/CO (FADDX1_RVT)                          0.03       0.74 r
+  intadd_204/U22/CO (FADDX1_RVT)                          0.03       0.77 r
+  intadd_204/U21/CO (FADDX1_RVT)                          0.03       0.80 r
+  intadd_204/U20/CO (FADDX1_RVT)                          0.03       0.83 r
+  intadd_204/U19/CO (FADDX1_RVT)                          0.03       0.87 r
+  intadd_204/U18/CO (FADDX1_RVT)                          0.03       0.90 r
+  intadd_204/U17/CO (FADDX1_RVT)                          0.03       0.93 r
+  intadd_204/U16/CO (FADDX1_RVT)                          0.03       0.96 r
+  intadd_204/U15/CO (FADDX1_RVT)                          0.03       0.99 r
+  intadd_204/U14/CO (FADDX1_RVT)                          0.03       1.02 r
+  intadd_204/U13/CO (FADDX1_RVT)                          0.03       1.05 r
+  intadd_204/U12/CO (FADDX1_RVT)                          0.03       1.08 r
+  intadd_204/U11/CO (FADDX1_RVT)                          0.03       1.11 r
+  intadd_204/U10/CO (FADDX1_RVT)                          0.03       1.14 r
+  intadd_204/U9/CO (FADDX1_RVT)                           0.03       1.17 r
+  intadd_204/U8/CO (FADDX1_RVT)                           0.03       1.20 r
+  intadd_204/U7/CO (FADDX1_RVT)                           0.03       1.23 r
+  intadd_204/U6/CO (FADDX1_RVT)                           0.03       1.26 r
+  intadd_204/U5/CO (FADDX1_RVT)                           0.03       1.29 r
+  intadd_204/U4/CO (FADDX1_RVT)                           0.03       1.32 r
+  intadd_204/U3/CO (FADDX1_RVT)                           0.03       1.35 r
+  U135708/S (FADDX1_RVT)                                  0.05       1.40 f
+  f30/Adder_26b_18f_block.delayForLatency_block/GenBlock.theDelay/delayline_reg[0][25]/D (DFFARX1_RVT)
+                                                          0.00       1.40 f
+  data arrival time                                                  1.40
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (propagated)                        0.09       2.09
+  clock uncertainty                                      -0.10       1.99
+  f30/Adder_26b_18f_block.delayForLatency_block/GenBlock.theDelay/delayline_reg[0][25]/CLK (DFFARX1_RVT)
+                                                          0.00       1.99 r
+  library setup time                                     -0.01       1.98
+  data required time                                                 1.98
+  --------------------------------------------------------------------------
+  data required time                                                 1.98
+  data arrival time                                                 -1.40
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.58
+
+
+  Startpoint: Wgt_0_784[0]
+              (input port clocked by clk)
+  Endpoint: f30/Adder_26b_18f_block.delayForLatency_block/GenBlock.theDelay/delayline_reg[0][0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Image_Classifier   1000000               saed32rvt_ff1p16vn40c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (propagated)                        0.00       0.00
+  input external delay                                    0.30       0.30 r
+  Wgt_0_784[0] (in)                                       0.00       0.30 r
+  U222316/Y (OA21X1_RVT)                                  0.56       0.86 r
+  f30/Adder_26b_18f_block.delayForLatency_block/GenBlock.theDelay/delayline_reg[0][0]/D (DFFARX1_RVT)
+                                                          0.13       0.99 r
+  data arrival time                                                  0.99
+
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (propagated)                    566077568.00
+                                                                 566077568.00
+  clock uncertainty                                       0.10   566077568.00
+  f30/Adder_26b_18f_block.delayForLatency_block/GenBlock.theDelay/delayline_reg[0][0]/CLK (DFFARX1_RVT)
+                                                          0.00   566077568.00 r
+  library hold time                                       0.00   566077568.00
+  data required time                                             566077568.00
+  --------------------------------------------------------------------------
+  data required time                                             566077568.00
+  data arrival time                                                 -0.99
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                               -566077568.00
+
+
+    Net: n189185
 
     max_transition         0.04
-  - Transition Time        0.02
+  - Transition Time        0.03
   ------------------------------
-    Slack                  0.02  (MET)
+    Slack                  0.01  (MET)
 
 
-    Net: n435969
+    Net: _91_net_ (dont_touch)
 
     max_capacitance       32.00
-  - Capacitance           31.86
+  - Capacitance          164.01
   ------------------------------
-    Slack                  0.14  (MET)
+    Slack               -132.01  (VIOLATED)
 
+
+    Design: Image_Classifier
+
+    max_area               0.00
+  - Current Area       1979772.88
+  ------------------------------
+    Slack              -1979772.88  (VIOLATED)
+
+
+Min pulse width constraints
+
+                       Required      Actual
+  Pin                pulse width   pulse width   Slack           Scenario
+--------------------------------------------------------------------------------
+  c/Image_Number_reg[1]/CLK(high)
+                      0.21          0.00         -0.21 (VIOLATED)
 
 1
