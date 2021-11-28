@@ -8,8 +8,8 @@ Report : power
         -hier
         -analysis_effort low
 Design : Image_Classifier
-Version: G-2012.06-SP1
-Date   : Sat Nov 27 10:50:47 2021
+Version: F-2011.09
+Date   : Sun Nov 28 04:04:17 2021
 ****************************************
 
 
@@ -39,5 +39,5 @@ Power-specific unit information :
                                        Switch   Int      Leak     Total
 Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
-Image_Classifier                       1.65e+03 5.72e+04 1.98e+12 2.03e+06 100.0
+Image_Classifier                       1.73e+03 1.09e+05 1.98e+12 2.09e+06 100.0
 1

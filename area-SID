@@ -2,8 +2,8 @@
 ****************************************
 Report : area
 Design : Image_Classifier
-Version: G-2012.06-SP1
-Date   : Sat Nov 27 10:49:11 2021
+Version: F-2011.09
+Date   : Sun Nov 28 04:02:35 2021
 ****************************************
 
 Library(s) Used:
@@ -11,32 +11,31 @@ Library(s) Used:
     saed32rvt_ff1p16vn40c (File: /w/apps2/public.2/tech/synopsys/32-28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ff1p16vn40c.db)
 
 Number of ports:                       157008
-Number of nets:                        467813
-Number of cells:                       277519
-Number of combinational cells:         219280
+Number of nets:                        486254
+Number of cells:                       305844
+Number of combinational cells:         247605
 Number of sequential cells:             58239
 Number of macros:                           0
-Number of buf/inv:                      24024
+Number of buf/inv:                      51026
 Number of references:                      54
 
-Combinational area:       581238.506930
-Buf/Inv area:             38471.303142
-Noncombinational area:    407090.409184
-Net Interconnect area:    991443.906415
+Combinational area:       619011.421010
+Noncombinational area:    406891.668613
+Net Interconnect area:    1101178.314230
 
-Total cell area:          988328.916114
-Total area:               1979772.822529
+Total cell area:          1025903.089623
+Total area:               2127081.403853
 
 Hierarchical area distribution
 ------------------------------
 
-                                  Global cell area              Local cell area
-                                  --------------------  -------------------------------- 
-Hierarchical cell                 Absolute     Percent  Combi-       Noncombi-    Black
-                                  Total        Total    national     national     boxes   Design
---------------------------------  -----------  -------  -----------  -----------  ------  ---------
-Image_Classifier                  988328.9161    100.0  581238.5069  407090.4092  0.0000  Image_Classifier
---------------------------------  -----------  -------  -----------  -----------  ------  ---------
-Total                                                   581238.5069  407090.4092  0.0000
+                                  Global cell area               Local cell area
+                                  ---------------------  -------------------------------- 
+Hierarchical cell                 Absolute      Percent  Combi-       Noncombi-    Black
+                                  Total         Total    national     national     boxes   Design
+--------------------------------  ------------  -------  -----------  -----------  ------  ---------
+Image_Classifier                  1025903.0896    100.0  619011.4210  406891.6686  0.0000  Image_Classifier
+--------------------------------  ------------  -------  -----------  -----------  ------  ---------
+Total                                                    619011.4210  406891.6686  0.0000
 
 1
